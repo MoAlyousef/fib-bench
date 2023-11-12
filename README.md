@@ -1,6 +1,6 @@
 # Fib Bench
 
-Wasm vs server-side fibonacci benchmark.
+Wasm vs server-side(rust) vs js(browser-side) fibonacci benchmark.
 
 To rebuild wasm:
 ```bash
