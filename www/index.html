@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="classless.css">
+    <title>Fibonacci wasm vs server benchmarks</title>
+    <style>
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5%;
+            align-content: center;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5%;
+            align-content: center;
+        }
+    </style>
+    <script type="module">
+        import * as index from "./index.js";
+
+        window.onload = () => {
+            index.myInit().then(() => {
+                const inp = document.getElementById("inp");
+                const btn = document.getElementById("btn");
+                const jsresult = document.getElementById("jsresult");
+                const wasmresult = document.getElementById("wasmresult");
+                const serverresult = document.getElementById("serverresult");
+                btn.onclick = () => {
+                    const val = inp.value | 0;
+                    wasmresult.textContent = `Wasm ${index.wasmFib(val)}`;
+                    index.serverFib(val).then((v) => {
+                        serverresult.textContent = `Server ${v}`;
+                    });
+                    jsresult.textContent = `JS ${index.jsFib(val)}`;
+                };
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="column">
+        <div class="row">
+            <div class="column">
+                <input type="number" id="inp">
+                <button id="btn">Calculate Fibonacci</button>
+                <div id="jsresult"></div>
+                <div id="wasmresult"></div>
+                <div id="serverresult"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
