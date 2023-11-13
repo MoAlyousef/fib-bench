@@ -13,4 +13,4 @@ server:
 	cd ..;
 
 run:
-	./server/target/release/server www
+	./server/target/release/simple_server 8000 www
