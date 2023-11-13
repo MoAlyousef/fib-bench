@@ -21,14 +21,16 @@ make run
 
 ## Results
 With an input value of 1:
-servertime: 6.831298828125 ms
-wasmtime: 0.008056640625 ms
-jstime: 0.004150390625 ms
+- servertime: 6.831298828125 ms
+- wasmtime: 0.008056640625 ms
+- jstime: 0.004150390625 ms
 
 With an input value of 45:
-servertime: 2983.470703125 ms
-wasmtime: 8184.0751953125 ms
-jstime: 15975.77490234375 ms
+- servertime: 2983.470703125 ms
+- wasmtime: 8184.0751953125 ms
+- jstime: 15975.77490234375 ms
+
+The results should appear in the browser's dev console. 
 
 This was run on a windows machine running wsl2 x86_64 GNU/Linux.
 Specs:
