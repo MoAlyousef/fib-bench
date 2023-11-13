@@ -8,10 +8,11 @@ make wasm
 ```
 This requires the wasm32-unknown-unkown target, in addition to wasm-bindgen-cli and wasm-opt, both can be installed via `cargo install`.
 
-To build server:
+To build the server:
 ```bash
 make server
 ```
+This uses tiny-http, which is a low-level http server library. It's mutlithreaded and blocking.
 
 To run server from the root dir:
 ```bash
