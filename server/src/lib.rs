@@ -20,6 +20,7 @@ fn get_content_type(path: &Path) -> &'static str {
         "html" => "text/html; charset=utf8",
         "txt" => "text/plain; charset=utf8",
         "js" => "application/javascript",
+        "css" => "text/css",
         "wasm" => "application/wasm",
         _ => "text/plain; charset=utf8",
     }
