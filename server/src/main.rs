@@ -96,7 +96,7 @@ impl Server {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    println!("Listening on 0.0.0.0:8000");
+    println!("Listening on 127.0.0.1:8000");
     let mut server = Server::new(8000, &PathBuf::from(&args[1]));
     server.route(tiny_http::Method::Post, "/", |rq| {
         let mut content = String::new();

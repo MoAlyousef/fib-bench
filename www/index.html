@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="classless.css">
-    <title>Fibonacci wasm vs server benchmarks</title>
+    <title>Fibonacci wasm vs js vs server benchmarks</title>
     <style>
         .row {
             display: flex;
@@ -25,22 +25,19 @@
     <script type="module">
         import * as index from "./index.js";
 
-        window.onload = () => {
-            index.myInit().then(() => {
-                const inp = document.getElementById("inp");
-                const btn = document.getElementById("btn");
-                const jsresult = document.getElementById("jsresult");
-                const wasmresult = document.getElementById("wasmresult");
-                const serverresult = document.getElementById("serverresult");
-                btn.onclick = () => {
-                    const val = inp.value | 0;
-                    wasmresult.textContent = `Wasm ${index.wasmFib(val)}`;
-                    index.serverFib(val).then((v) => {
-                        serverresult.textContent = `Server ${v}`;
-                    });
-                    jsresult.textContent = `JS ${index.jsFib(val)}`;
-                };
-            });
+        window.onload = async () => {
+            await index.myInit();
+            const inp = document.getElementById("inp");
+            const btn = document.getElementById("btn");
+            const jsresult = document.getElementById("jsresult");
+            const wasmresult = document.getElementById("wasmresult");
+            const serverresult = document.getElementById("serverresult");
+            btn.onclick = async () => {
+                const val = inp.value | 0;
+                serverresult.textContent = `Server ${await index.serverFib(val)}`;
+                wasmresult.textContent = `Wasm ${index.wasmFib(val)}`;
+                jsresult.textContent = `JS ${index.jsFib(val)}`;
+            };
         };
     </script>
 </head>
