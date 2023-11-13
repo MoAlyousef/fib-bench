@@ -1,5 +1,4 @@
-use simple_server::SimpleServer;
-use tiny_http::{Method, Response};
+use livid_server::{Server, Method, Response};
 
 fn fibonacci(n: u32) -> u32 {
     match n {
@@ -12,7 +11,7 @@ fn fibonacci(n: u32) -> u32 {
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     println!("Listening on 127.0.0.1:{}", args[1]);
-    let mut server = SimpleServer::new(args[1].parse().unwrap(), &args[2]);
+    let mut server = Server::new(args[1].parse().unwrap(), &args[2]);
     server.route(Method::Post, "/", |rq| {
         let mut content = String::new();
         rq.as_reader().read_to_string(&mut content).unwrap();

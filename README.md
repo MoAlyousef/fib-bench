@@ -12,7 +12,7 @@ To build the server:
 ```bash
 make server
 ```
-This uses tiny-http, which is a low-level http server library. It's mutlithreaded and blocking.
+This is a simple thread per request and blocking server based on tiny-http.
 
 To run server from the root dir:
 ```bash
