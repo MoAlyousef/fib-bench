@@ -2,6 +2,10 @@
 
 Wasm vs server-side(rust) vs js(browser-side) fibonacci benchmark.
 
+WebAssembly can't directly access the DOM, it has to call javascript to do so and is known to incur a cost when manipulating the DOM. How about raw computation, how does wasm compare to server-side computation or client-side javascript computation?
+
+## Building
+
 The wasm binary is already included, however, to rebuild it:
 ```bash
 make wasm
@@ -45,6 +49,7 @@ Rust version: 1.71 stable.
 Google chrome: Version 119.0.6045.107 (Official Build) (64-bit)
 
 ## Conclusion
-- wasm-opt -O3 didn't improve performance by much. It did reduce the generated wasm size by several hundred bytes. It's advantage might be apparent in larger wasm binaries perhaps. 
-- Calling server-side computations requires a network call and marshalling data to and from the server, which incurs an unnecessary cost when the computation is trivial. In such cases javascript and wasm offer close enough computation cost.
+- wasm-opt -O3 didn't improve performance by much. It did reduce the generated wasm size by 30 percent however.
+- Calling server-side computations requires a network call and marshalling data to and from the server, which incurs an unnecessary cost when the computation is trivial. In such cases javascript and wasm offer close enough computation cost. A wasm function call cost, even though minor, can be twice as slow as the javascript one.
 - For intensive computations, the server cost can be considered negligible since native computation remains faster than wasm. Even then, client-side javascript is only twice as slow as wasm!
+- Wasm on the browser, to me, makes sense when wanting to target the web using a different language than javascript. Although I'm no fan of js, js browser engines do a good job at optimizing it. However other languages bring other advantages to the table, either in language merit or ecosystem, and with wasm, these can be used in browsers. It also makes sense if you're serving static web pages and not handling (or can't handle) post requrests, or want to reduce server computations.
