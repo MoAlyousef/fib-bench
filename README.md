@@ -43,6 +43,6 @@ Rust version: 1.71 stable.
 Google chrome: Version 119.0.6045.107 (Official Build) (64-bit)
 
 ## Conclusion
-wasm-opt -O3 didn't improve performance by much. it did reduce the generated wasm size. 
-Calling server-side computations requires a network call and marshalling data to and from the server, which incurs an unnecessary cost when the computation is trivial. In such cases javascript and wasm offer close enough computation cost.
-For intensive computations, the server cost can be considered negligible since native computation remains faster than wasm. Even then, client-side javascript is only twice as slow as wasm!
+- wasm-opt -O3 didn't improve performance by much. It did reduce the generated wasm size by several hundred bytes. It's advantage might be apparent in larger wasm binaries perhaps. 
+- Calling server-side computations requires a network call and marshalling data to and from the server, which incurs an unnecessary cost when the computation is trivial. In such cases javascript and wasm offer close enough computation cost.
+- For intensive computations, the server cost can be considered negligible since native computation remains faster than wasm. Even then, client-side javascript is only twice as slow as wasm!
