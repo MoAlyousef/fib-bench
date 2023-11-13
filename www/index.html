@@ -38,6 +38,11 @@
                 wasmresult.textContent = `Wasm ${index.wasmFib(val)}`;
                 jsresult.textContent = `JS ${index.jsFib(val)}`;
             };
+            inp.onkeypress = (event) => {
+                if (event.key == "Enter") {
+                    btn.click();
+                }
+            };
         };
     </script>
 </head>
